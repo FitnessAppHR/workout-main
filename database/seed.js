@@ -1,37 +1,4 @@
-/*
-  Schema of the Data object
-
-  { workoutId: 1,
-  name: 'Runner Warm Up',
-  exercises:
-   [ { name: 'Pull Ups', equipment: 'Pull Up Bar', img: 's3.AWS.com/image2' },
-     { name: 'Pull Ups', equipment: 'Pull Up Bar', img: 's3.AWS.com/image2' },
-     { name: 'Bicep Curls', equipment: 'Dumbbells', img: 's3.AWS.com/image4' },
-     { name: 'Push ups', equipment: null, img: 's3.AWS.com/image1' },
-     { name: 'Bicep Curls', equipment: 'Dumbbells', img: 's3.AWS.com/image4' },
-     { name: 'Dumbbell Deadlifts', equipment: 'Dumbbells', img: 's3.AWS.com/image3' },
-     { name: 'High Kicks', equipment: null, img: 's3.AWS.com/image4' },
-     { name: 'Jump Squats', equipment: null, img: 's3.AWS.com/image2' },
-     { name: 'Lunges', equipment: null, img: 's3.AWS.com/image3' },
-     { name: 'Split Jumps', equipment: null, img: 's3.AWS.com/image1' },
-     { name: 'Hip Lifts', equipment: null, img: 's3.AWS.com/image3' },
-     { name: 'Mountain Climbers', equipment: null, img: 's3.AWS.com/image3' },
-     { name: 'Sit ups', equipment: null, img: 's3.AWS.com/image1' },
-     { name: 'Sit Up Twist', equipment: null, img: 's3.AWS.com/image3' }
-   ],
-  image: 's3.AWS.com/image1',
-  duration: 28,
-  calories: 210,
-  intensity: 'Easy',
-  equipment: 'None',
-  goodFor: 'Overall Fitness',
-  muscleGroup: 'Full Body',
-  workoutType: 'Strength',
-  level: 'Intermediate'
-}
-
-
-*/
+const mongo = require('./mongoHelpers')
 
 let coreNameArray = ['Quick Finisher', 'Ab Burner 2.0', 'Core Crush', 'Straight Up Abs', 'Core Burn Out', 'Core Crunch 2.0', 'Quick-Hit Abs', 'Core Circuit', 'Core Countdown', 'Ab Rocket', 'Full Core Press', 'Super Twister', 'Ultimate Core Combo', 'Ab Blaster'];
 let upperBodyNameArray = ['Bis and Tris', 'Push and Pull', 'Upper Body Express', 'Tank Top Arms', 'Shoulder Shaper', 'Boxer Buff', 'Smokin Shoulders', 'Fluid Strength', 'Active Arms', 'Atlas Amplified', 'Pec Deck', 'Beef Castle', 'Shoulder and Core'];
@@ -46,57 +13,61 @@ let goodForArray = ['Quick Burn', 'Cardio', 'Overall Fitness', 'Strength', 'Mobi
 let muscleGroupArray = ['Core', 'Upper Body', 'Lower Body', 'Full Body'];
 let workoutTypeArray = ['Strength', 'Cardio', 'Endurance', 'Mobility'];
 let levelArray = ['Beginner', 'Intermediate', 'Advanced'];
+let coreImages = ['https://mvp-hrla36.s3-us-west-1.amazonaws.com/WorkoutHeader1.jpg', 'https://mvp-hrla36.s3-us-west-1.amazonaws.com/WorkoutHeader3.jpg', 'https://mvp-hrla36.s3-us-west-1.amazonaws.com/WorkoutHeader8.jpg'];
+let lowerImages = ['https://mvp-hrla36.s3-us-west-1.amazonaws.com/WorkoutHeader2.jpg', 'https://mvp-hrla36.s3-us-west-1.amazonaws.com/WorkoutHeader4.jpg', 'https://mvp-hrla36.s3-us-west-1.amazonaws.com/WorkoutHeade11.jpg'];
+let upperImages = ['https://mvp-hrla36.s3-us-west-1.amazonaws.com/WorkoutHeader2.jpg', 'https://mvp-hrla36.s3-us-west-1.amazonaws.com/WorkoutHeader4.jpg', 'https://mvp-hrla36.s3-us-west-1.amazonaws.com/WorkoutHeade11.jpg'];
+let fullImages = ['https://mvp-hrla36.s3-us-west-1.amazonaws.com/WorkoutHeader1.jpg', 'https://mvp-hrla36.s3-us-west-1.amazonaws.com/WorkoutHeader6.jpg', 'https://mvp-hrla36.s3-us-west-1.amazonaws.com/WorkoutHeader8.jpg'];
 
 let coreExercisesArray = [
   {
     name: 'Sit ups',
     equipment: null,
-    img: 's3.AWS.com/image1'
+    img: 'https://mvp-hrla36.s3-us-west-1.amazonaws.com/exercise1.png'
   },
   {
     name: 'Planks',
     equipment: null,
-    img: 's3.AWS.com/image2'
+    img: 'https://mvp-hrla36.s3-us-west-1.amazonaws.com/exercise4.png'
   },
   {
     name: 'Sit Up Twist',
     equipment: null,
-    img: 's3.AWS.com/image3'
+    img: 'https://mvp-hrla36.s3-us-west-1.amazonaws.com/exercise5.png'
   },
   {
     name: 'Reverse Crunch',
     equipment: null,
-    img: 's3.AWS.com/image4'
+    img: 'https://mvp-hrla36.s3-us-west-1.amazonaws.com/exercise6.png'
   },
   {
     name: 'Plank Leg Lifts',
     equipment: null,
-    img: 's3.AWS.com/image1'
+    img: 'https://mvp-hrla36.s3-us-west-1.amazonaws.com/exercise1.png'
   },
   {
     name: 'Side Plank',
     equipment: null,
-    img: 's3.AWS.com/image2'
+    img: 'https://mvp-hrla36.s3-us-west-1.amazonaws.com/exercise2.png'
   },
   {
     name: 'Hip Lifts',
     equipment: null,
-    img: 's3.AWS.com/image3'
+    img: 'https://mvp-hrla36.s3-us-west-1.amazonaws.com/exercise3.png'
   },
   {
     name: 'Pendulum Legs',
     equipment: null,
-    img: 's3.AWS.com/image4'
+    img: 'https://mvp-hrla36.s3-us-west-1.amazonaws.com/exercise4.png'
   },
   {
     name: 'Mountain Climbers',
     equipment: null,
-    img: 's3.AWS.com/image3'
+    img: 'https://mvp-hrla36.s3-us-west-1.amazonaws.com/exercise5.png'
   },
   {
     name: 'Ab Roller',
     equipment: 'Ab Roller',
-    img: 's3.AWS.com/image4'
+    img: 'https://mvp-hrla36.s3-us-west-1.amazonaws.com/exercise6.png'
   }
 ];
 
@@ -104,62 +75,62 @@ let upperBodyExercisesArray = [
   {
     name: 'Push ups',
     equipment: null,
-    img: 's3.AWS.com/image1'
+    img: 'https://mvp-hrla36.s3-us-west-1.amazonaws.com/exercise1.png'
   },
   {
     name: 'Pull Ups',
     equipment: 'Pull Up Bar',
-    img: 's3.AWS.com/image2'
+    img: 'https://mvp-hrla36.s3-us-west-1.amazonaws.com/exercise2.png'
   },
   {
     name: 'Chin Ups',
     equipment: null,
-    img: 's3.AWS.com/image3'
+    img: 'https://mvp-hrla36.s3-us-west-1.amazonaws.com/exercise3.png'
   },
   {
     name: 'Dips On Bench',
     equipment: 'Bench',
-    img: 's3.AWS.com/image4'
+    img: 'https://mvp-hrla36.s3-us-west-1.amazonaws.com/exercise4.png'
   },
   {
     name: 'Side Arm Rows',
     equipment: 'Dumbbells',
-    img: 's3.AWS.com/image1'
+    img: 'https://mvp-hrla36.s3-us-west-1.amazonaws.com/exercise5.png'
   },
   {
     name: 'Dumbbell Chest Press',
     equipment: 'Dumbbells',
-    img: 's3.AWS.com/image2'
+    img: 'https://mvp-hrla36.s3-us-west-1.amazonaws.com/exercise6.png'
   },
   {
     name: 'Dumbbell Flys',
     equipment: 'Dumbbells',
-    img: 's3.AWS.com/image3'
+    img: 'https://mvp-hrla36.s3-us-west-1.amazonaws.com/exercise1.png'
   },
   {
     name: 'Bicep Curls',
     equipment: 'Dumbbells',
-    img: 's3.AWS.com/image4'
+    img: 'https://mvp-hrla36.s3-us-west-1.amazonaws.com/exercise2.png'
   },
   {
     name: 'Hammer Curls',
     equipment: 'Dumbbells',
-    img: 's3.AWS.com/image2'
+    img: 'https://mvp-hrla36.s3-us-west-1.amazonaws.com/exercise3.png'
   },
   {
     name: 'Hand Stands Holds',
     equipment: 'Dumbbells',
-    img: 's3.AWS.com/image3'
+    img: 'https://mvp-hrla36.s3-us-west-1.amazonaws.com/exercise4.png'
   },
   {
     name: 'Bicep Curls',
     equipment: 'Pull Up Bar',
-    img: 's3.AWS.com/image4'
+    img: 'https://mvp-hrla36.s3-us-west-1.amazonaws.com/exercise5.png'
   },
   {
     name: 'Bench Press',
     equipment: 'Bench Press',
-    img: 's3.AWS.com/image4'
+    img: 'https://mvp-hrla36.s3-us-west-1.amazonaws.com/exercise6.png'
   }
 ];
 
@@ -167,71 +138,72 @@ let lowerBodyExercisesArray = [
   {
     name: 'Bodyweight Squats',
     equipment: null,
-    img: 's3.AWS.com/image1'
+    img: 'https://mvp-hrla36.s3-us-west-1.amazonaws.com/exercise1.png'
   },
   {
     name: 'Jump Squats',
     equipment: null,
-    img: 's3.AWS.com/image2'
+    img: 'https://mvp-hrla36.s3-us-west-1.amazonaws.com/exercise2.png'
   },
   {
     name: 'Lunges',
     equipment: null,
-    img: 's3.AWS.com/image3'
+    img: 'https://mvp-hrla36.s3-us-west-1.amazonaws.com/exercise3.png'
   },
   {
     name: 'Crossback Lunges',
     equipment: null,
-    img: 's3.AWS.com/image4'
+    img: 'https://mvp-hrla36.s3-us-west-1.amazonaws.com/exercise4.png'
   },
   {
     name: 'Split Jumps',
     equipment: null,
-    img: 's3.AWS.com/image1'
+    img: 'https://mvp-hrla36.s3-us-west-1.amazonaws.com/exercise5.png'
   },
   {
     name: 'Lateral Duck Walk',
     equipment: null,
-    img: 's3.AWS.com/image2'
+    img: 'https://mvp-hrla36.s3-us-west-1.amazonaws.com/exercise6.png'
   },
   {
     name: 'Dumbbell Deadlifts',
     equipment: 'Dumbbells',
-    img: 's3.AWS.com/image3'
+    img: 'https://mvp-hrla36.s3-us-west-1.amazonaws.com/exercise1.png'
   },
   {
     name: 'High Kicks',
     equipment: null,
-    img: 's3.AWS.com/image4'
+    img: 'https://mvp-hrla36.s3-us-west-1.amazonaws.com/exercise2.png'
   },
   {
     name: 'Side Lunges',
     equipment: null,
-    img: 's3.AWS.com/image2'
+    img: 'https://mvp-hrla36.s3-us-west-1.amazonaws.com/exercise3.png'
   },
   {
     name: 'Hamstring Stretch',
     equipment: null,
-    img: 's3.AWS.com/image3'
+    img: 'https://mvp-hrla36.s3-us-west-1.amazonaws.com/exercise4.png'
   },
   {
     name: 'Squat Hold',
     equipment: null,
-    img: 's3.AWS.com/image4'
+    img: 'https://mvp-hrla36.s3-us-west-1.amazonaws.com/exercise5.png'
   },
   {
     name: 'Burpees',
     equipment: null,
-    img: 's3.AWS.com/image1'
+    img: 'https://mvp-hrla36.s3-us-west-1.amazonaws.com/exercise6.png'
   }
 ];
+
 
 let coreWorkoutGenerator = () => {
   let obj = {};
 
   obj.name = coreNameArray[(Math.floor(Math.random() * (coreNameArray.length - 1)))];
   obj.exercises = coreExerciseGenerator();
-  obj.image = 's3.AWS.com/image1';
+  obj.image = coreImages[(Math.floor(Math.random() * (coreImages.length - 1)))];
   obj.duration = (obj.exercises.length * 2);
   obj.calories = (obj.exercises.length * 15);
   obj.intensity = intensityArray[(Math.floor(Math.random() * (intensityArray.length - 1)))];
@@ -259,7 +231,7 @@ let lowerBodyWorkoutGenerator = () => {
 
   obj.name = lowerBodyNameArray[(Math.floor(Math.random() * (lowerBodyNameArray.length - 1)))];
   obj.exercises = lowerBodyExerciseGenerator();
-  obj.image = 's3.AWS.com/image1';
+  obj.image = lowerImages[(Math.floor(Math.random() * (lowerImages.length - 1)))];
   obj.duration = (obj.exercises.length * 2);
   obj.calories = (obj.exercises.length * 15);
   obj.intensity = intensityArray[(Math.floor(Math.random() * (intensityArray.length - 1)))];
@@ -288,7 +260,7 @@ let upperBodyWorkoutGenerator = () => {
 
   obj.name = upperBodyNameArray[(Math.floor(Math.random() * (upperBodyNameArray.length - 1)))];
   obj.exercises = upperBodyExerciseGenerator();
-  obj.image = 's3.AWS.com/image1';
+  obj.image = upperImages[(Math.floor(Math.random() * (upperImages.length - 1)))];
   obj.duration = (obj.exercises.length * 2);
   obj.calories = (obj.exercises.length * 15);
   obj.intensity = intensityArray[(Math.floor(Math.random() * (intensityArray.length - 1)))];
@@ -316,7 +288,7 @@ let fullBodyWorkoutGenerator = () => {
 
   obj.name = fullBodyNameArray[(Math.floor(Math.random() * (fullBodyNameArray.length - 1)))];
   obj.exercises = fullBodyExerciseGenerator();
-  obj.image = 's3.AWS.com/image1';
+  obj.image = fullImages[(Math.floor(Math.random() * (fullImages.length - 1)))];
   obj.duration = (obj.exercises.length * 2);
   obj.calories = (obj.exercises.length * 15);
   obj.intensity = intensityArray[(Math.floor(Math.random() * (intensityArray.length - 1)))];
@@ -364,4 +336,17 @@ let workoutsGenerator = (n) => {
   return workouts;
 }
 
-console.log(workoutsGenerator(2));
+//This will produce 4 * n workouts
+let seedDB = (n) => {
+  let workoutsArray = workoutsGenerator(n)
+
+  workoutsArray.map( (workout) => {
+    // Post to Database using mongo helpers
+    mongo.postWorkout(workout)
+      .then( () => console.log('Seeded MongoDB'))
+      .catch( err => console.error(err))
+  })
+}
+
+//This will produce 4 * n workouts
+seedDB(15);

@@ -5,15 +5,19 @@ import { StyleSheet, Text, View } from 'react-native';
 import { RectButton, ScrollView } from 'react-native-gesture-handler';
 import ViewPager from '@react-native-community/viewpager';
 
-import Core from './Workouts/Core.js'
+
+import Core from './Workouts/Core.js';
+import FullBody from './Workouts/FullBody';
+import WorkoutBox from './Workouts/WorkoutBox';
+import WorkoutSummary from './Workouts/WorkoutSummary';
 
 export default function WorkoutOverview() {
   return (
+
     <View style={{ flex: 1 }}>
       <ViewPager style={styles.viewPager} initialPage={0}>
         <View style={styles.page} key="1">
-          <Text>First page</Text>
-          <Text>Swipe ➡️</Text>
+          <FullBody />
         </View>
         <View style={styles.page} key="2">
           <Core />

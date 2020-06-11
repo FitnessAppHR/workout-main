@@ -7,7 +7,11 @@ export default {
       path: 'root',
       screens: {
         Home: 'home',
-        Workouts: 'workouts',
+        Workouts: {
+          Core: 'Core',
+          WorkoutBox: 'WorkoutBox',
+          WorkoutSummary: 'WorkoutSummary',
+        },
         Profile: 'profile',
       },
     },

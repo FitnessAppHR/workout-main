@@ -1,10 +1,13 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import * as React from 'react';
 
+
+
 import TabBarIcon from '../components/TabBarIcon';
 import HomeScreen from '../screens/HomeScreen';
 import LinksScreen from '../screens/LinksScreen';
 import Workouts from '../screens/WorkoutOverview';
+import WorkoutSummary from '../screens/Workouts/WorkoutSummary';
 
 const BottomTab = createBottomTabNavigator();
 const INITIAL_ROUTE_NAME = 'Home';
@@ -34,10 +37,10 @@ export default function BottomTabNavigator({ navigation, route }) {
         }}
       />
       <BottomTab.Screen
-        name="Profile"
-        component={LinksScreen}
+        name="WorkoutSummary"
+        component={WorkoutSummary}
         options={{
-          title: 'Profile',
+          title: 'Workout',
           tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name="md-book" />,
         }}
       />
@@ -53,7 +56,8 @@ function getHeaderTitle(route) {
       return 'WorkoutAppName';
     case 'Workouts':
       return 'Workouts';
-    case 'Profile':
-      return 'Profile';
+    case 'WorkoutSummary':
+      return 'WorkoutSummary';
   }
 }
+
