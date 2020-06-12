@@ -3,8 +3,8 @@ import * as React from 'react';
 import { Image, Platform, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator, navigation } from '@react-navigation/stack';
-// import * as navigation from '@react-navigation/navigation';
+import { createStackNavigator } from '@react-navigation/stack';
+
 
 
 
@@ -16,11 +16,13 @@ export default function Workout(props) {
   return (
 
     <View style={styles.box} >
-      <Image source={{ uri: props.workout.image }}
-        style={styles.thumbnail} />
+        <Image source={{ uri: props.workout.image }}
+          style={styles.thumbnail} />
+        <Text style={styles.durationText}>{props.workout.duration}</Text>
+        <Text style={styles.minutes}> Minutes </Text>
       <View style={styles.textBlock}>
-        <Text style={styles.textTitle} onPress={() => navigation.navigate('WorkoutSummary')}>{props.workout.name}</Text>
-        <Text style={styles.textSub}>{props.workout.intensity} - {props.workout.equipment} - {props.workout.workoutType}</Text>
+        <Text style={styles.textTitle} >{props.workout.name}</Text>
+        <Text style={styles.textSub}>{props.workout.calories} Calories - {props.workout.intensity} - {props.workout.workoutType}</Text>
       </View>
     </View>
   )
@@ -61,5 +63,27 @@ const styles = StyleSheet.create({
     position: 'relative',
     fontFamily: 'Arial',
     textAlign: 'center',
+  },
+  durationText: {
+    position: 'absolute',
+    top: 24,
+    left: 32,
+    fontWeight: '900',
+    fontSize: 24,
+    color: '#ffffff',
+    textShadowColor: 'rgba(0, 0, 0, 0.75)',
+    textShadowOffset: {width: -1, height: 1},
+    textShadowRadius: 10
+  },
+  minutes: {
+    position: 'absolute',
+    top: 50,
+    left: 15,
+    fontWeight: '900',
+    fontSize: 16,
+    color: '#ffffff',
+    textShadowColor: 'rgba(0, 0, 0, 0.75)',
+    textShadowOffset: {width: -1, height: 1},
+    textShadowRadius: 10
   },
 });

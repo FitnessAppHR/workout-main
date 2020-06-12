@@ -8,8 +8,11 @@ import ViewPager from '@react-native-community/viewpager';
 
 import Core from './Workouts/Core.js';
 import FullBody from './Workouts/FullBody';
+import LowerBody from './Workouts/LowerBody';
+import UpperBody from './Workouts/UpperBody';
 import WorkoutBox from './Workouts/WorkoutBox';
 import WorkoutSummary from './Workouts/WorkoutSummary';
+import WorkoutNav from '../navigation/Nav';
 
 export default function WorkoutOverview() {
   return (
@@ -23,7 +26,13 @@ export default function WorkoutOverview() {
           <Core />
         </View>
         <View style={styles.page} key="3">
-          <Text>Third page</Text>
+          <LowerBody />
+        </View>
+        <View style={styles.page} key="4">
+          <UpperBody />
+        </View>
+        <View key="5">
+          <WorkoutNav/>
         </View>
       </ViewPager>
     </View>

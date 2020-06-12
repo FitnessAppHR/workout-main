@@ -1,11 +1,11 @@
 const mongo = require('./mongoHelpers')
 
 let coreNameArray = ['Quick Finisher', 'Ab Burner 2.0', 'Core Crush', 'Straight Up Abs', 'Core Burn Out', 'Core Crunch 2.0', 'Quick-Hit Abs', 'Core Circuit', 'Core Countdown', 'Ab Rocket', 'Full Core Press', 'Super Twister', 'Ultimate Core Combo', 'Ab Blaster'];
-let upperBodyNameArray = ['Bis and Tris', 'Push and Pull', 'Upper Body Express', 'Tank Top Arms', 'Shoulder Shaper', 'Boxer Buff', 'Smokin Shoulders', 'Fluid Strength', 'Active Arms', 'Atlas Amplified', 'Pec Deck', 'Beef Castle', 'Shoulder and Core'];
+let upperBodyNameArray = ['Bis and Tris', 'Push and Pull', 'Tank Top Arms', 'Shoulder Shaper', 'Boxer Buff', 'Beef Castle', 'Smokin Shoulders', 'Upper Body Express', 'Fluid Strength', 'Active Arms', 'Atlas Amplified', 'Pec Deck', 'Shoulder and Core'];
 let lowerBodyNameArray = ['Glutes and Glory', 'Better Butt', 'Jump Start', 'Leaner Legs', 'Hip Strength', 'Quad Toner', 'Quad God', 'All Out Legs', 'Backside Burner', 'Leg Max Out', 'Lower Body HIT', 'Leg Power Up'];
-let fullBodyNameArray = ['Runner Warm Up', 'Core Control', 'Activation Station', 'Basic Burner', 'HIT Circuit', 'Full Body Burn', 'Back to Basics', 'Bootcamp Body', 'Calorie Burner', 'Body Benchmark', 'Fit Finisher', 'At the Limit'];
-// let duration = (exercises.length * 2);
-// let calories = (exercises.length * 15);
+let fullBodyNameArray = ['Runner Warm Up', 'Core Control', 'Activation Station', 'Basic Burner', 'HIT Circuit', 'Full Body Burn', 'Back to Basics', 'Bootcamp Body', 'Calorie Burner', 'Body Benchmark', 'Fit Finisher', 'At the Limit', 'Pain Train'];
+
+
 let intensityArray = ['Easy', 'Moderate', 'Hard'];
 let equipmentArray = ['None', 'Basic', 'Full'];
 let goodForArray = ['Quick Burn', 'Cardio', 'Overall Fitness', 'Strength', 'Mobility', 'Endurance', 'Conditioning', 'Upper Body Strength', 'Core Stability'];
@@ -14,60 +14,60 @@ let muscleGroupArray = ['Core', 'Upper Body', 'Lower Body', 'Full Body'];
 let workoutTypeArray = ['Strength', 'Cardio', 'Endurance', 'Mobility'];
 let levelArray = ['Beginner', 'Intermediate', 'Advanced'];
 let coreImages = ['https://mvp-hrla36.s3-us-west-1.amazonaws.com/WorkoutHeader1.jpg', 'https://mvp-hrla36.s3-us-west-1.amazonaws.com/WorkoutHeader3.jpg', 'https://mvp-hrla36.s3-us-west-1.amazonaws.com/WorkoutHeader8.jpg'];
-let lowerImages = ['https://mvp-hrla36.s3-us-west-1.amazonaws.com/WorkoutHeader2.jpg', 'https://mvp-hrla36.s3-us-west-1.amazonaws.com/WorkoutHeader4.jpg', 'https://mvp-hrla36.s3-us-west-1.amazonaws.com/WorkoutHeade11.jpg'];
-let upperImages = ['https://mvp-hrla36.s3-us-west-1.amazonaws.com/WorkoutHeader2.jpg', 'https://mvp-hrla36.s3-us-west-1.amazonaws.com/WorkoutHeader4.jpg', 'https://mvp-hrla36.s3-us-west-1.amazonaws.com/WorkoutHeade11.jpg'];
+let lowerImages = ['https://mvp-hrla36.s3-us-west-1.amazonaws.com/WorkoutHeader2.jpg', 'https://mvp-hrla36.s3-us-west-1.amazonaws.com/WorkoutHeader4.jpg', 'https://mvp-hrla36.s3-us-west-1.amazonaws.com/WorkoutHeader11.jpg'];
+let upperImages = ['https://mvp-hrla36.s3-us-west-1.amazonaws.com/WorkoutHeader7.jpg', 'https://mvp-hrla36.s3-us-west-1.amazonaws.com/WorkoutHeader5.jpg', 'https://mvp-hrla36.s3-us-west-1.amazonaws.com/WorkoutHeader10.jpg'];
 let fullImages = ['https://mvp-hrla36.s3-us-west-1.amazonaws.com/WorkoutHeader1.jpg', 'https://mvp-hrla36.s3-us-west-1.amazonaws.com/WorkoutHeader6.jpg', 'https://mvp-hrla36.s3-us-west-1.amazonaws.com/WorkoutHeader8.jpg'];
 
 let coreExercisesArray = [
   {
     name: 'Sit ups',
     equipment: null,
-    img: 'https://mvp-hrla36.s3-us-west-1.amazonaws.com/exercise1.png'
+    img: 'https://mvp-hrla36.s3-us-west-1.amazonaws.com/exercise1.png',
   },
   {
     name: 'Planks',
     equipment: null,
-    img: 'https://mvp-hrla36.s3-us-west-1.amazonaws.com/exercise4.png'
+    img: 'https://mvp-hrla36.s3-us-west-1.amazonaws.com/exercise4.png',
   },
   {
     name: 'Sit Up Twist',
     equipment: null,
-    img: 'https://mvp-hrla36.s3-us-west-1.amazonaws.com/exercise5.png'
+    img: 'https://mvp-hrla36.s3-us-west-1.amazonaws.com/exercise5.png',
   },
   {
     name: 'Reverse Crunch',
     equipment: null,
-    img: 'https://mvp-hrla36.s3-us-west-1.amazonaws.com/exercise6.png'
+    img: 'https://mvp-hrla36.s3-us-west-1.amazonaws.com/exercise6.png',
   },
   {
     name: 'Plank Leg Lifts',
     equipment: null,
-    img: 'https://mvp-hrla36.s3-us-west-1.amazonaws.com/exercise1.png'
+    img: 'https://mvp-hrla36.s3-us-west-1.amazonaws.com/exercise1.png',
   },
   {
     name: 'Side Plank',
     equipment: null,
-    img: 'https://mvp-hrla36.s3-us-west-1.amazonaws.com/exercise2.png'
+    img: 'https://mvp-hrla36.s3-us-west-1.amazonaws.com/exercise2.png',
   },
   {
     name: 'Hip Lifts',
     equipment: null,
-    img: 'https://mvp-hrla36.s3-us-west-1.amazonaws.com/exercise3.png'
+    img: 'https://mvp-hrla36.s3-us-west-1.amazonaws.com/exercise3.png',
   },
   {
     name: 'Pendulum Legs',
     equipment: null,
-    img: 'https://mvp-hrla36.s3-us-west-1.amazonaws.com/exercise4.png'
+    img: 'https://mvp-hrla36.s3-us-west-1.amazonaws.com/exercise4.png',
   },
   {
     name: 'Mountain Climbers',
     equipment: null,
-    img: 'https://mvp-hrla36.s3-us-west-1.amazonaws.com/exercise5.png'
+    img: 'https://mvp-hrla36.s3-us-west-1.amazonaws.com/exercise5.png',
   },
   {
     name: 'Ab Roller',
     equipment: 'Ab Roller',
-    img: 'https://mvp-hrla36.s3-us-west-1.amazonaws.com/exercise6.png'
+    img: 'https://mvp-hrla36.s3-us-west-1.amazonaws.com/exercise6.png',
   }
 ];
 
@@ -75,62 +75,62 @@ let upperBodyExercisesArray = [
   {
     name: 'Push ups',
     equipment: null,
-    img: 'https://mvp-hrla36.s3-us-west-1.amazonaws.com/exercise1.png'
+    img: 'https://mvp-hrla36.s3-us-west-1.amazonaws.com/exercise1.png',
   },
   {
     name: 'Pull Ups',
     equipment: 'Pull Up Bar',
-    img: 'https://mvp-hrla36.s3-us-west-1.amazonaws.com/exercise2.png'
+    img: 'https://mvp-hrla36.s3-us-west-1.amazonaws.com/exercise2.png',
   },
   {
     name: 'Chin Ups',
     equipment: null,
-    img: 'https://mvp-hrla36.s3-us-west-1.amazonaws.com/exercise3.png'
+    img: 'https://mvp-hrla36.s3-us-west-1.amazonaws.com/exercise3.png',
   },
   {
     name: 'Dips On Bench',
     equipment: 'Bench',
-    img: 'https://mvp-hrla36.s3-us-west-1.amazonaws.com/exercise4.png'
+    img: 'https://mvp-hrla36.s3-us-west-1.amazonaws.com/exercise4.png',
   },
   {
     name: 'Side Arm Rows',
     equipment: 'Dumbbells',
-    img: 'https://mvp-hrla36.s3-us-west-1.amazonaws.com/exercise5.png'
+    img: 'https://mvp-hrla36.s3-us-west-1.amazonaws.com/exercise5.png',
   },
   {
     name: 'Dumbbell Chest Press',
     equipment: 'Dumbbells',
-    img: 'https://mvp-hrla36.s3-us-west-1.amazonaws.com/exercise6.png'
+    img: 'https://mvp-hrla36.s3-us-west-1.amazonaws.com/exercise6.png',
   },
   {
     name: 'Dumbbell Flys',
     equipment: 'Dumbbells',
-    img: 'https://mvp-hrla36.s3-us-west-1.amazonaws.com/exercise1.png'
+    img: 'https://mvp-hrla36.s3-us-west-1.amazonaws.com/exercise1.png',
   },
   {
     name: 'Bicep Curls',
     equipment: 'Dumbbells',
-    img: 'https://mvp-hrla36.s3-us-west-1.amazonaws.com/exercise2.png'
+    img: 'https://mvp-hrla36.s3-us-west-1.amazonaws.com/exercise2.png',
   },
   {
     name: 'Hammer Curls',
     equipment: 'Dumbbells',
-    img: 'https://mvp-hrla36.s3-us-west-1.amazonaws.com/exercise3.png'
+    img: 'https://mvp-hrla36.s3-us-west-1.amazonaws.com/exercise3.png',
   },
   {
     name: 'Hand Stands Holds',
     equipment: 'Dumbbells',
-    img: 'https://mvp-hrla36.s3-us-west-1.amazonaws.com/exercise4.png'
+    img: 'https://mvp-hrla36.s3-us-west-1.amazonaws.com/exercise4.png',
   },
   {
     name: 'Bicep Curls',
     equipment: 'Pull Up Bar',
-    img: 'https://mvp-hrla36.s3-us-west-1.amazonaws.com/exercise5.png'
+    img: 'https://mvp-hrla36.s3-us-west-1.amazonaws.com/exercise5.png',
   },
   {
     name: 'Bench Press',
     equipment: 'Bench Press',
-    img: 'https://mvp-hrla36.s3-us-west-1.amazonaws.com/exercise6.png'
+    img: 'https://mvp-hrla36.s3-us-west-1.amazonaws.com/exercise6.png',
   }
 ];
 
@@ -138,62 +138,62 @@ let lowerBodyExercisesArray = [
   {
     name: 'Bodyweight Squats',
     equipment: null,
-    img: 'https://mvp-hrla36.s3-us-west-1.amazonaws.com/exercise1.png'
+    img: 'https://mvp-hrla36.s3-us-west-1.amazonaws.com/exercise1.png',
   },
   {
     name: 'Jump Squats',
     equipment: null,
-    img: 'https://mvp-hrla36.s3-us-west-1.amazonaws.com/exercise2.png'
+    img: 'https://mvp-hrla36.s3-us-west-1.amazonaws.com/exercise2.png',
   },
   {
     name: 'Lunges',
     equipment: null,
-    img: 'https://mvp-hrla36.s3-us-west-1.amazonaws.com/exercise3.png'
+    img: 'https://mvp-hrla36.s3-us-west-1.amazonaws.com/exercise3.png',
   },
   {
     name: 'Crossback Lunges',
     equipment: null,
-    img: 'https://mvp-hrla36.s3-us-west-1.amazonaws.com/exercise4.png'
+    img: 'https://mvp-hrla36.s3-us-west-1.amazonaws.com/exercise4.png',
   },
   {
     name: 'Split Jumps',
     equipment: null,
-    img: 'https://mvp-hrla36.s3-us-west-1.amazonaws.com/exercise5.png'
+    img: 'https://mvp-hrla36.s3-us-west-1.amazonaws.com/exercise5.png',
   },
   {
     name: 'Lateral Duck Walk',
     equipment: null,
-    img: 'https://mvp-hrla36.s3-us-west-1.amazonaws.com/exercise6.png'
+    img: 'https://mvp-hrla36.s3-us-west-1.amazonaws.com/exercise6.png',
   },
   {
     name: 'Dumbbell Deadlifts',
     equipment: 'Dumbbells',
-    img: 'https://mvp-hrla36.s3-us-west-1.amazonaws.com/exercise1.png'
+    img: 'https://mvp-hrla36.s3-us-west-1.amazonaws.com/exercise1.png',
   },
   {
     name: 'High Kicks',
     equipment: null,
-    img: 'https://mvp-hrla36.s3-us-west-1.amazonaws.com/exercise2.png'
+    img: 'https://mvp-hrla36.s3-us-west-1.amazonaws.com/exercise2.png',
   },
   {
     name: 'Side Lunges',
     equipment: null,
-    img: 'https://mvp-hrla36.s3-us-west-1.amazonaws.com/exercise3.png'
+    img: 'https://mvp-hrla36.s3-us-west-1.amazonaws.com/exercise3.png',
   },
   {
     name: 'Hamstring Stretch',
     equipment: null,
-    img: 'https://mvp-hrla36.s3-us-west-1.amazonaws.com/exercise4.png'
+    img: 'https://mvp-hrla36.s3-us-west-1.amazonaws.com/exercise4.png',
   },
   {
     name: 'Squat Hold',
     equipment: null,
-    img: 'https://mvp-hrla36.s3-us-west-1.amazonaws.com/exercise5.png'
+    img: 'https://mvp-hrla36.s3-us-west-1.amazonaws.com/exercise5.png',
   },
   {
     name: 'Burpees',
     equipment: null,
-    img: 'https://mvp-hrla36.s3-us-west-1.amazonaws.com/exercise6.png'
+    img: 'https://mvp-hrla36.s3-us-west-1.amazonaws.com/exercise6.png',
   }
 ];
 

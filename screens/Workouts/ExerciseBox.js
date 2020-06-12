@@ -10,18 +10,37 @@ import WorkoutSummary from './WorkoutSummary';
 
 
 
-export default function ExerciseBox(props) {
-  return (
+export default class ExerciseBox extends React.Component {
+  constructor(props){
+    super(props);
 
-    <View style={styles.box} >
-      <Image source={{ uri: props.exercise.img }} style={styles.thumbnail} />
-      <View style={styles.textBlock}>
-        <Text style={styles.textTitle} >{props.exercise.name}</Text>
-        <Text style={styles.textSub}>{props.exercise.equipment}</Text>
+    this.state = {
+      time: this.props.time,
+    };
+  }
+
+  render() {
+    if (this.state.time == '00:00:05'){
+      return (
+        <View style={styles.box} >
+          <Text>Completed</Text>
+        </View>
+      )
+    } else {
+    return (
+
+      <View style={styles.box} >
+        <Image source={{ uri: this.props.exercise.img }} style={styles.thumbnail} />
+        <View style={styles.textBlock}>
+          <Text style={styles.textTitle} >{this.props.exercise.name}</Text>
+          <Text style={styles.textSub}>{this.props.exercise.equipment}</Text>
+          <Text style={styles.textSub}>{this.props.exercise.reps}</Text>
+        </View>
+        <Text style={styles.textTime}> {this.props.time}</Text>
       </View>
-    </View>
-  )
-
+    )
+    }
+  }
 }
 
 
@@ -43,20 +62,24 @@ const styles = StyleSheet.create({
   },
   textBlock: {
     position: 'absolute',
-    top: 26,
+    top: 20,
     left: 150,
   },
   textTitle: {
-    position: 'relative',
     fontFamily: 'Arial',
     fontWeight: '700',
     fontSize: 20,
-    textAlign: 'center',
-
+    textAlign: 'left',
   },
   textSub: {
     position: 'relative',
     fontFamily: 'Arial',
-    textAlign: 'center',
+    textAlign: 'left',
   },
+  textTime: {
+    position: 'absolute',
+    bottom: 10,
+    right: 10,
+    fontFamily: 'Arial',
+  }
 });

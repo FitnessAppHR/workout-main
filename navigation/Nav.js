@@ -12,15 +12,16 @@ import WorkoutSummary from '../screens/Workouts/WorkoutSummary';
 const Stack = createStackNavigator();
 
 
-export default function WorkoutNav() {
+export default function WorkoutNav({ navigation }) {
 
   return (
     <NavigationContainer independent={true}>
       <Stack.Navigator>
+        <Stack.Screen name="WorkoutSummary" component={WorkoutSummary} />
         <Stack.Screen name="Core" component={Core} />
         <Stack.Screen name="FullBody" component={FullBody} />
         <Stack.Screen name="WorkoutBox" component={WorkoutBox} />
-        <Stack.Screen name="WorkoutSummary" component={WorkoutSummary} />
+
       </Stack.Navigator>
     </NavigationContainer>
   )

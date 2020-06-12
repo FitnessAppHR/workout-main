@@ -38,6 +38,7 @@ export default class Core extends React.Component {
           <ScrollView>
             <Image source={{ uri: 'https://mvp-hrla36.s3-us-west-1.amazonaws.com/coreHeader.jpg' }}
               style={styles.headerImage} />
+              <Text style={styles.headerText}>CORE & ABS</Text>
             <View style={styles.workoutCount}>
               <Text style={styles.countText}>{this.state.workouts.length} Workouts </Text>
             </View>
@@ -75,5 +76,13 @@ const styles = StyleSheet.create({
     top: 5,
     left: 10,
   },
+  headerText: {
+    position: 'absolute',
+    top: 300,
+    left: 60,
+    color: 'black',
+    fontWeight: '900',
+    fontSize: 48,
 
+ }
 });

@@ -41,6 +41,7 @@ export default class FullBody extends React.Component {
           <ScrollView>
             <Image source={{ uri: 'https://mvp-hrla36.s3-us-west-1.amazonaws.com/fullBodyHeader.jpg' }}
               style={styles.headerImage} />
+              <Text style={styles.headerText}>FULL BODY</Text>
             <View style={styles.workoutCount}>
               <Text style={styles.countText}>{this.state.workouts.length} Workouts </Text>
             </View>
@@ -78,5 +79,12 @@ const styles = StyleSheet.create({
     top: 5,
     left: 10,
   },
-
+  headerText: {
+    position: 'absolute',
+    top: 300,
+    left: 75,
+    color: 'black',
+    fontWeight: '900',
+    fontSize: 48,
+ }
 });

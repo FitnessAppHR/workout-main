@@ -57,7 +57,7 @@ function getHeaderTitle(route) {
     case 'Workouts':
       return 'Workouts';
     case 'WorkoutSummary':
-      return 'WorkoutSummary';
+      return 'Workout';
   }
 }
 

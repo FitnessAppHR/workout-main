@@ -28,8 +28,25 @@ app.get('/full', function (req, res, next) {
     .catch(err => console.log(err))
 });
 
+app.get('/lower', function (req, res, next) {
+  //Query Database
+  mongo.getLowerExercises()
+    .then(function (data) {
+      // handle data
+      res.status(200).send(data)
+    })
+    .catch(err => console.log(err))
+});
 
-
+app.get('/upper', function (req, res, next) {
+  //Query Database
+  mongo.getUpperExercises()
+    .then(function (data) {
+      // handle data
+      res.status(200).send(data)
+    })
+    .catch(err => console.log(err))
+});
 
 app.get('/workout/:name', function (req, res, next) {
   //Query Database

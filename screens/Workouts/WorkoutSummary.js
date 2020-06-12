@@ -1,15 +1,14 @@
 import * as WebBrowser from 'expo-web-browser';
 import * as React from 'react';
-import { Image, Platform, StyleSheet, Text, TouchableOpacity, View, Button } from 'react-native';
+import { Image, Platform, StyleSheet, Text, TouchableOpacity, View, Button, Alert } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 import axios from 'axios';
 import ExerciseBox from './ExerciseBox';
 
 
-
 export default class WorkoutSummary extends React.Component {
-  constructor(props){
-    super(props);
+  constructor(props, { navigation } ){
+    super(props, { navigation });
 
     this.state = {
       workout: exampleData,
@@ -21,7 +20,7 @@ export default class WorkoutSummary extends React.Component {
   }
 
   componentDidMount(){
-    this.getWorkout();
+    // this.getWorkout();
   }
 
   startTimer(){
@@ -67,7 +66,7 @@ export default class WorkoutSummary extends React.Component {
 
   getWorkout(){
     // This is where you would pass in the exercise name from navigation prop of what exercise is clicked
-    let name = 'Core Countdown'
+    let name = 'Quad God'
     axios.get(`http://localhost:3100/workout/${name}`)
     .then( (results) => {
       this.setState({
@@ -85,16 +84,20 @@ export default class WorkoutSummary extends React.Component {
           <Image source={{ uri: this.state.workout.image }}
             style={styles.headerImage} />
           <Text style={styles.headerText}> {this.state.workout.name}</Text>
+          <View style={styles.button} >
           {this.state.timer?
-          <Button title="Stop" onPress={this.pauseTimer}></Button>
-          :<Button title="Start" onPress={this.startTimer}></Button>}
+          <Button style={styles.buttonText} title="Stop" onPress={()=> {this.pauseTimer(); Alert.alert('Great Work! This workout will be added to your stats.')}}></Button>
+          :<Button  style={styles.buttonText} title="Start" onPress={this.startTimer}></Button>}
+          </View>
           <View style={styles.subText}>
             <Text style={styles.subText}>{this.state.workout.intensity} | {this.state.workout.level} | {this.state.workout.duration} Minutes</Text>
+          <View>
           </View>
-          <Text>{this.state.time}</Text>
+          </View>
+            <Text style={styles.timer}>{this.state.time}</Text>
           {this.state.workout.exercises.map((exercise, index) => {
               return (
-                  <ExerciseBox key={index} exercise={exercise} />
+                  <ExerciseBox key={index} exercise={exercise} time={this.state.time} />
               )
             })}
         </ScrollView>
@@ -110,7 +113,7 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
   },
   headerImage: {
-    width: 400,
+    width: 420,
     height: 400,
   },
   headerText: {
@@ -131,7 +134,31 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
   },
   button: {
-    backgroundColor: 'yellow',
+    position: 'absolute',
+    top: 320,
+    left: 160,
+    height: 40,
+    width: 100,
+    borderRadius: 15,
+    backgroundColor: '#fce205',
+    borderStyle: 'solid',
+    borderWidth: 1,
+    borderColor: 'black',
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.8,
+    shadowRadius: 2,
+    elevation: 1,
+  },
+  timer: {
+    position: 'absolute',
+    top: 20,
+    left: 20,
+    fontSize: 25,
+    fontWeight: '900',
+  },
+  buttonText: {
+    position: 'absolute',
   }
 
 });
@@ -145,42 +172,50 @@ let exampleData = {
 		{
 			"name" : "Dumbbell Deadlifts",
 			"equipment" : "Dumbbells",
-			"img" : "https://mvp-hrla36.s3-us-west-1.amazonaws.com/exercise1.png"
+      "img" : "https://mvp-hrla36.s3-us-west-1.amazonaws.com/exercise1.png",
+      "reps" : "3 x 10"
 		},
 		{
 			"name" : "Lunges",
 			"equipment" : null,
-			"img" : "https://mvp-hrla36.s3-us-west-1.amazonaws.com/exercise3.png"
+			"img" : "https://mvp-hrla36.s3-us-west-1.amazonaws.com/exercise3.png",
+      "reps" : "2 x 16 Alternating Legs"
 		},
 		{
 			"name" : "Hamstring Stretch",
 			"equipment" : null,
-			"img" : "https://mvp-hrla36.s3-us-west-1.amazonaws.com/exercise4.png"
+			"img" : "https://mvp-hrla36.s3-us-west-1.amazonaws.com/exercise4.png",
+      "reps" : "30 Seconds"
 		},
 		{
 			"name" : "Dumbbell Deadlifts",
 			"equipment" : "Dumbbells",
-			"img" : "https://mvp-hrla36.s3-us-west-1.amazonaws.com/exercise1.png"
+			"img" : "https://mvp-hrla36.s3-us-west-1.amazonaws.com/exercise5.png",
+      "reps" : "3 x 10"
 		},
 		{
 			"name" : "Side Lunges",
 			"equipment" : null,
-			"img" : "https://mvp-hrla36.s3-us-west-1.amazonaws.com/exercise3.png"
+			"img" : "https://mvp-hrla36.s3-us-west-1.amazonaws.com/exercise2.png",
+      "reps" : "60 Seconds - Alternating Sides"
 		},
 		{
 			"name" : "Squat Hold",
 			"equipment" : null,
-			"img" : "https://mvp-hrla36.s3-us-west-1.amazonaws.com/exercise5.png"
+			"img" : "https://mvp-hrla36.s3-us-west-1.amazonaws.com/exercise6.png",
+      "reps" : "2 x 30"
 		},
 		{
 			"name" : "Lateral Duck Walk",
 			"equipment" : null,
-			"img" : "https://mvp-hrla36.s3-us-west-1.amazonaws.com/exercise6.png"
+			"img" : "https://mvp-hrla36.s3-us-west-1.amazonaws.com/exercise3.png",
+      "reps" : "2 x 10 Alternating Sides"
 		},
 		{
 			"name" : "Bodyweight Squats",
 			"equipment" : null,
-			"img" : "https://mvp-hrla36.s3-us-west-1.amazonaws.com/exercise1.png"
+			"img" : "https://mvp-hrla36.s3-us-west-1.amazonaws.com/exercise2.png",
+      "reps" : "3 x 10"
 		}
 	],
 	"name" : "Quad Toner",
