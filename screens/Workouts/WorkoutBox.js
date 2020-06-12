@@ -56,13 +56,13 @@ const styles = StyleSheet.create({
     fontFamily: 'Arial',
     fontWeight: '700',
     fontSize: 20,
-    textAlign: 'center',
+    textAlign: 'left',
 
   },
   textSub: {
     position: 'relative',
     fontFamily: 'Arial',
-    textAlign: 'center',
+    textAlign: 'left',
   },
   durationText: {
     position: 'absolute',

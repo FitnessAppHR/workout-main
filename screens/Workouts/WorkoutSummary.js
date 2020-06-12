@@ -7,8 +7,8 @@ import ExerciseBox from './ExerciseBox';
 
 
 export default class WorkoutSummary extends React.Component {
-  constructor(props, { navigation } ){
-    super(props, { navigation });
+  constructor(props){
+    super(props);
 
     this.state = {
       workout: exampleData,
@@ -122,6 +122,11 @@ const styles = StyleSheet.create({
     left: 120,
     fontSize: 30,
     fontWeight: '900',
+    shadowColor: '#FFF',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.8,
+    shadowRadius: 2,
+    elevation: 1,
   },
   subText: {
     position: 'relative',
@@ -139,7 +144,7 @@ const styles = StyleSheet.create({
     left: 160,
     height: 40,
     width: 100,
-    borderRadius: 15,
+    borderRadius: 10,
     backgroundColor: '#fce205',
     borderStyle: 'solid',
     borderWidth: 1,
@@ -152,8 +157,8 @@ const styles = StyleSheet.create({
   },
   timer: {
     position: 'absolute',
-    top: 20,
-    left: 20,
+    top: 360,
+    right: 20,
     fontSize: 25,
     fontWeight: '900',
   },
@@ -172,7 +177,7 @@ let exampleData = {
 		{
 			"name" : "Dumbbell Deadlifts",
 			"equipment" : "Dumbbells",
-      "img" : "https://mvp-hrla36.s3-us-west-1.amazonaws.com/exercise1.png",
+      "img" : "https://mvp-hrla36.s3-us-west-1.amazonaws.com/exercise4.png",
       "reps" : "3 x 10"
 		},
 		{
@@ -184,7 +189,7 @@ let exampleData = {
 		{
 			"name" : "Hamstring Stretch",
 			"equipment" : null,
-			"img" : "https://mvp-hrla36.s3-us-west-1.amazonaws.com/exercise4.png",
+			"img" : "https://mvp-hrla36.s3-us-west-1.amazonaws.com/exercise1.png",
       "reps" : "30 Seconds"
 		},
 		{
@@ -206,10 +211,10 @@ let exampleData = {
       "reps" : "2 x 30"
 		},
 		{
-			"name" : "Lateral Duck Walk",
-			"equipment" : null,
+			"name" : "Bench Press",
+			"equipment" : "Barbell",
 			"img" : "https://mvp-hrla36.s3-us-west-1.amazonaws.com/exercise3.png",
-      "reps" : "2 x 10 Alternating Sides"
+      "reps" : "3 x 10"
 		},
 		{
 			"name" : "Bodyweight Squats",
@@ -218,8 +223,8 @@ let exampleData = {
       "reps" : "3 x 10"
 		}
 	],
-	"name" : "Quad Toner",
-	"image" : "https://mvp-hrla36.s3-us-west-1.amazonaws.com/WorkoutHeader4.jpg",
+	"name" : "HIT Circuit",
+	"image" : "https://mvp-hrla36.s3-us-west-1.amazonaws.com/WorkoutHeader12.jpg",
 	"duration" : 16,
 	"calories" : 120,
 	"intensity" : "Easy",

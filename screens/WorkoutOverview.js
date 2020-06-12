@@ -6,13 +6,10 @@ import { RectButton, ScrollView } from 'react-native-gesture-handler';
 import ViewPager from '@react-native-community/viewpager';
 
 
-import Core from './Workouts/Core.js';
+
 import FullBody from './Workouts/FullBody';
-import LowerBody from './Workouts/LowerBody';
-import UpperBody from './Workouts/UpperBody';
-import WorkoutBox from './Workouts/WorkoutBox';
 import WorkoutSummary from './Workouts/WorkoutSummary';
-import WorkoutNav from '../navigation/Nav';
+import WorkoutHome from './WorkoutHome';
 
 export default function WorkoutOverview() {
   return (
@@ -20,19 +17,13 @@ export default function WorkoutOverview() {
     <View style={{ flex: 1 }}>
       <ViewPager style={styles.viewPager} initialPage={0}>
         <View style={styles.page} key="1">
-          <FullBody />
+          <WorkoutHome />
         </View>
         <View style={styles.page} key="2">
-          <Core />
+          <FullBody />
         </View>
         <View style={styles.page} key="3">
-          <LowerBody />
-        </View>
-        <View style={styles.page} key="4">
-          <UpperBody />
-        </View>
-        <View key="5">
-          <WorkoutNav/>
+          <WorkoutSummary />
         </View>
       </ViewPager>
     </View>

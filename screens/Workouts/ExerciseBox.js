@@ -6,6 +6,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
 
+
 import WorkoutSummary from './WorkoutSummary';
 
 
@@ -20,13 +21,7 @@ export default class ExerciseBox extends React.Component {
   }
 
   render() {
-    if (this.state.time == '00:00:05'){
-      return (
-        <View style={styles.box} >
-          <Text>Completed</Text>
-        </View>
-      )
-    } else {
+
     return (
 
       <View style={styles.box} >
@@ -39,7 +34,7 @@ export default class ExerciseBox extends React.Component {
         <Text style={styles.textTime}> {this.props.time}</Text>
       </View>
     )
-    }
+
   }
 }
 
@@ -49,7 +44,7 @@ const styles = StyleSheet.create({
   box: {
     flex: 1,
     flexDirection: 'row',
-    width: 400,
+    width: 415,
     height: 100,
     borderBottomColor: '#808080',
     borderBottomWidth: 1,

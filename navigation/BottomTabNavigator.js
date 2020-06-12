@@ -8,6 +8,7 @@ import HomeScreen from '../screens/HomeScreen';
 import LinksScreen from '../screens/LinksScreen';
 import Workouts from '../screens/WorkoutOverview';
 import WorkoutSummary from '../screens/Workouts/WorkoutSummary';
+import WorkoutHome from '../screens/WorkoutHome'
 
 const BottomTab = createBottomTabNavigator();
 const INITIAL_ROUTE_NAME = 'Home';
@@ -37,8 +38,8 @@ export default function BottomTabNavigator({ navigation, route }) {
         }}
       />
       <BottomTab.Screen
-        name="WorkoutSummary"
-        component={WorkoutSummary}
+        name="WorkoutHome"
+        component={WorkoutHome}
         options={{
           title: 'Workout',
           tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name="md-book" />,
@@ -56,8 +57,8 @@ function getHeaderTitle(route) {
       return 'WorkoutAppName';
     case 'Workouts':
       return 'Workouts';
-    case 'WorkoutSummary':
-      return 'Workout';
+    case 'WorkoutHome':
+      return 'Workout Homepage';
   }
 }
 
