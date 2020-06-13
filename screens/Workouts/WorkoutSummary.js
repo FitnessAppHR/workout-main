@@ -61,7 +61,7 @@ export default class WorkoutSummary extends React.Component {
     clearInterval()
     this.setState({
       timer: false,
-    }, ()=>{console.log(this.state)})
+    })
   }
 
   getWorkout(){
